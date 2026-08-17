@@ -2290,6 +2290,108 @@
     margin-bottom: 14px;
   }
 
+  /* ===== SPECIALIZED SERVICES (COMPACT MINI CARDS) ===== */
+  .special-services-section {
+    padding: 0 16px 12px;
+  }
+  .special-services-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .special-services-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .special-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .special-service-compact-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 9px 6px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    transition: all .15s ease;
+    user-select: none;
+    position: relative;
+  }
+  .special-service-compact-card:hover {
+    border-color: #CBD5E1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .special-service-compact-card:active {
+    transform: scale(0.97);
+  }
+  .special-service-compact-top {
+    position: relative;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .special-service-compact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .special-service-icon-bagasi { background: #EFF6FF; border: 1px solid #BFDBFE; }
+  .special-service-icon-anabul { background: #FEF2F2; border: 1px solid #FECACA; }
+  .special-service-icon-antre { background: #FFFBEB; border: 1px solid #FDE68A; }
+
+  .coming-soon-mini-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    color: #64748B;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 4.5px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+  }
+  .special-service-compact-name {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  .special-service-compact-sub {
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--secondary);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
   /* ===== ONBOARDING GUIDANCE OVERLAY & MODAL ===== */
   .guidance-overlay{
     position:absolute;
@@ -5306,7 +5408,50 @@ function renderTimeline(){
       </div>
     ` : ''}
 
-    <div class="chip-row">
+    <!-- Specialized Services Section (Compact Mini-Cards) -->
+    <div class="special-services-section">
+      <div class="special-services-header">
+        <div class="special-services-title">
+          <span>✨ Specialized Services</span>
+          <span style="font-size:9px; background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE; padding:1px 5px; border-radius:100px; font-weight:700;">NEW</span>
+        </div>
+        <span style="font-size:10px; color:var(--muted); font-weight:600;">Upcoming</span>
+      </div>
+      
+      <div class="special-services-grid">
+        <!-- 1. TitipBagasi -->
+        <div class="special-service-compact-card" onclick="showToast('🧳 TitipBagasi is coming soon!')" title="TitipBagasi - Coming Soon">
+          <div class="special-service-compact-top">
+            <div class="special-service-compact-icon special-service-icon-bagasi">🧳</div>
+            <span class="coming-soon-mini-badge">Soon</span>
+          </div>
+          <div class="special-service-compact-name">TitipBagasi</div>
+          <div class="special-service-compact-sub">Luggage Space</div>
+        </div>
+
+        <!-- 2. TitipAnabul -->
+        <div class="special-service-compact-card" onclick="showToast('🐾 TitipAnabul is coming soon!')" title="TitipAnabul - Coming Soon">
+          <div class="special-service-compact-top">
+            <div class="special-service-compact-icon special-service-icon-anabul">🐾</div>
+            <span class="coming-soon-mini-badge">Soon</span>
+          </div>
+          <div class="special-service-compact-name">TitipAnabul</div>
+          <div class="special-service-compact-sub">Pet Delivery</div>
+        </div>
+
+        <!-- 3. TitipAntre -->
+        <div class="special-service-compact-card" onclick="showToast('🎟️ TitipAntre is coming soon!')" title="TitipAntre - Coming Soon">
+          <div class="special-service-compact-top">
+            <div class="special-service-compact-icon special-service-icon-antre">🎟️</div>
+            <span class="coming-soon-mini-badge">Soon</span>
+          </div>
+          <div class="special-service-compact-name">TitipAntre</div>
+          <div class="special-service-compact-sub">Queue Proxy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chip-row" style="padding-top:0;">
       <div class="chip ${activeChip==='all'?'active':''}" onclick="setTimelineChip('all')">All</div>
       <div class="chip ${activeChip==='trip'?'active':''}" onclick="setTimelineChip('trip')">Trips</div>
       <div class="chip ${activeChip==='lapak'?'active':''}" onclick="setTimelineChip('lapak')">Stalls</div>
@@ -5699,6 +5844,25 @@ function renderTitipFormPage(){
       <div class="detail-back-title">Post a Request</div>
     </div>
     <div class="form-body">
+
+      <!-- Service Type Option -->
+      <div class="form-group" style="margin-bottom:14px;">
+        <div class="form-label">Service Type</div>
+        <div style="display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; margin:0 -4px; padding-left:4px; padding-right:4px;">
+          <button type="button" class="filter-pill active" style="font-size:11px; white-space:nowrap; padding:6px 12px;">
+            🛍️ Regular Item Jastip
+          </button>
+          <button type="button" class="filter-pill" style="font-size:11px; white-space:nowrap; opacity:0.65; cursor:pointer; padding:6px 12px;" onclick="showToast('🧳 TitipBagasi is coming soon!')">
+            🧳 TitipBagasi <span style="font-size:8.5px; background:#F1F5F9; color:#64748B; padding:1px 4px; border-radius:4px; margin-left:2px;">SOON</span>
+          </button>
+          <button type="button" class="filter-pill" style="font-size:11px; white-space:nowrap; opacity:0.65; cursor:pointer; padding:6px 12px;" onclick="showToast('🐾 TitipAnabul is coming soon!')">
+            🐾 TitipAnabul <span style="font-size:8.5px; background:#F1F5F9; color:#64748B; padding:1px 4px; border-radius:4px; margin-left:2px;">SOON</span>
+          </button>
+          <button type="button" class="filter-pill" style="font-size:11px; white-space:nowrap; opacity:0.65; cursor:pointer; padding:6px 12px;" onclick="showToast('🎟️ TitipAntre is coming soon!')">
+            🎟️ TitipAntre <span style="font-size:8.5px; background:#F1F5F9; color:#64748B; padding:1px 4px; border-radius:4px; margin-left:2px;">SOON</span>
+          </button>
+        </div>
+      </div>
 
       <div class="form-group">
         <div class="form-label">Product Photo <span class="optional">(optional)</span></div>
